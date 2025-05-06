@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	int n, m, out = 0;
+	int minsix = 10000, minone = 10000;
+
+	cin >> n >> m;
+	for (int i = 0; i < m; i++) {
+		int six, one;
+		cin >> six >> one;
+		if (six < minsix)
+			minsix = six;
+		if (one < minone)
+			minone = one;
+	}
+
+	while (n > 0)
+	{
+		if (n >= 6)
+		{
+			if (minone * 6 > minsix) {
+				out += minsix;
+			}
+			else {
+				out += (minone * 6);
+			}
+			n -= 6;
+		}
+		else {
+			if (minone * n < minsix)
+				out += (minone * n);
+			else
+				out += minsix;
+			n = 0;
+		}
+	}
+	cout << out << "\n";
+
+	return 0;
+}
